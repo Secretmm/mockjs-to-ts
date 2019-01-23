@@ -66,15 +66,35 @@ function writeToTs(dir, options) {
     return fs.writeFileSync(
         path.join(dir, 'index.ts'),
         prettier.format(
-            `interface StringIndex<T> {
+            `import axios from 'axios';
+            interface StringIndex<T> {
         [index: string]: T;
     }
     const method = '${options.method}';
-    const utl = '${options.url}';
+    const url = '${options.url}';
     interface Params ${options.params}
     interface Response ${options.response}
     export function fetch(params: Params, mock?: boolean): Promise<Response> {
-        return;
+        return new Promise((resolve, reject) => {
+            axios({
+                url: url,
+                method: method,
+                ${options.method === 'GET' ? 'params' : 'data'}: params,
+            })
+            .then(({ data }) => {
+                if (data.code === 200 || data.code === 0) {
+                    return resolve(data.data);
+                } else {
+                    return reject({ code: data.code, message: data.message });
+                }
+            })
+            .catch(() => {
+                return reject({
+                    code: 503,
+                    message: '数据加载失败，请刷新重试'
+                });
+            });
+        })
     }`,
             { parser: 'typescript', singleQuote: true, tabWidth: 4 }
         )
