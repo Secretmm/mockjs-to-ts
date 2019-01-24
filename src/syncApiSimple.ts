@@ -8,7 +8,6 @@ export default function sync(config) {
     const endpoint = config.endpoint;
     const rootDir = config.rootDir;
     const repositories = config.repositories;
-    const includePorts = config.includePorts;
     const cache = getCacheFile(rootDir);
     const { moduleCache, interfaceCache } = prepareCache(cache);
 
@@ -22,15 +21,10 @@ export default function sync(config) {
             if (moduleCache[m.id] === m.updatedAt) {
                 return;
             }
-
             m.interfaces.forEach(async i => {
                 if (interfaceCache[i.id] === i.updatedAt) {
                     return;
                 }
-                if (!includePorts.some(item => item.id === i.id)) {
-                    return;
-                }
-                // console.log(i.id);
                 const url = i.url;
                 const id = i.id;
                 const name = i.name;
@@ -69,7 +63,6 @@ function mockjs2ts(mockjsObj: object) {
 }
 function writeToTs(dir, options) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    console.log(path.join(dir, 'index.ts'));
     return fs.writeFileSync(
         path.join(dir, 'index.ts'),
         prettier.format(

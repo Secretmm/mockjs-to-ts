@@ -1,6 +1,5 @@
 import sync from './syncApi';
-import * as fs from 'fs';
+import config from './config';
 
-const config = fs.readFileSync('./config.json', 'utf-8');
 
-sync(JSON.parse(config));
+sync(config);
