@@ -172,4 +172,5 @@ list.forEach(item => {
     result[item.id] = item.url;
 });
 
-export default result
+// export default result
+export default list

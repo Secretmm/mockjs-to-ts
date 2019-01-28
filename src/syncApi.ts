@@ -31,6 +31,9 @@ export default function sync(config) {
                     return;
                 }
                 // console.log(i.id);
+                // for(var i in includePorts) {
+
+                // }
                 const url = i.url;
                 const id = i.id;
                 const name = i.name;
@@ -69,7 +72,7 @@ function mockjs2ts(mockjsObj: object) {
 }
 function writeToTs(dir, options) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    console.log(path.join(dir, 'index.ts'));
+    // console.log(path.join(dir, 'index.ts'));
     return fs.writeFileSync(
         path.join(dir, 'index.ts'),
         prettier.format(
