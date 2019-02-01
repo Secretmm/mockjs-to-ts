@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as prettier from 'prettier';
-import { convert } from './index';
+import { convert, convert3 } from './index';
 
 export default function sync(config) {
     const endpoint = config.endpoint;
@@ -43,7 +43,7 @@ export default function sync(config) {
                 let responseTemplate = await getResponseTemplate(endpoint, id);
 
                 let params = mockjs2ts(requestTemplate.data);
-                let response = mockjs2ts(responseTemplate.data.data);
+                let response = mockjs3ts(responseTemplate.data.data);
                 writeToTs(path.join(rootDir, url), {
                     name,
                     description,
@@ -66,9 +66,11 @@ async function getRequestTemplate(endpoint: string, id: number) {
 async function getResponseTemplate(endpoint: string, id: number) {
     return await axios(`${endpoint}/app/mock/template/${id}?scope=response`);
 }
-
 function mockjs2ts(mockjsObj: object) {
     return convert(mockjsObj);
+}
+function mockjs3ts(mockjsObj: object) {
+    return convert3(mockjsObj);
 }
 function writeToTs(dir, options) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -76,26 +78,19 @@ function writeToTs(dir, options) {
     return fs.writeFileSync(
         path.join(dir, 'index.ts'),
         prettier.format(
-            `import axios from 'axios';
-            interface StringIndex<T> {
-        [index: string]: T;
-    }
+            `import { ApiMetaProvider } from '@/api';
     const method = '${options.method}';
     const url = '${options.url}';
     interface Params ${options.params}
     interface Response ${options.response}
-    export async function fetch(params: Params, mock?: boolean): Promise<Response> {
-        const { data } = await axios({
+    const metaProvider: ApiMetaProvider<Params, Response> = function() {
+        return {
             url: url,
-            method: method,
-            ${options.method === 'GET' ? 'params' : 'data'}: params,
-        })
-        if (data.code === 200 || data.code === 0) {
-            return data.data;
-        } else {
-            throw { code: data.code, message: data.message };
-        }
-    }`,
+            method: method
+        };
+    };
+    export {metaProvider, Params} 
+`,
             { parser: 'typescript', singleQuote: true, tabWidth: 4 }
         )
     );
