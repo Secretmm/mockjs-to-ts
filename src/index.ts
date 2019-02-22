@@ -29,6 +29,13 @@ export function convert(mockjsObj: object) {
 
     return content;
 }
+export function convert3(mockjsObj: object) {
+    let parsed = parse(mockjsObj);
+    let result = parsed.map(dispatch);
+    let content = generate3(result);
+
+    return content;
+}
 
 function parse(mockjsObj: object): ParsedEntry[] {
     let parsed = [];
@@ -100,14 +107,28 @@ function dispatch(entry: ParsedEntry) {
 
     return result;
 }
-
+const toCamelCaseVar = (variable) =>
+    variable.replace(/\_+[a-zA-Z]/g,
+        (str, index) => index ? str.substr(-1).toUpperCase() : str
+    )
 function generate(result: Array<any>) {
     let content = `{
     ${result
-        .map(item => {
-            return item.key + ': ' + item.type + ';';
-        })
-        .join('\n    ')}
+            .map(item => {
+                return item.key + ': ' + item.type + ';';
+            })
+            .join('\n    ')}
+}
+`;
+    return content;
+}
+function generate3(result: Array<any>) {
+    let content = `{
+    ${result
+            .map(item => {
+                return toCamelCaseVar(item.key) + ': ' + item.type + ';';
+            })
+            .join('\n    ')}
 }
 `;
     return content;

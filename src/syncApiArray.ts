@@ -1,4 +1,5 @@
 //Params变为驼峰
+//Resonponse数组时
 import axios from 'axios';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -31,10 +32,6 @@ export default function sync(config) {
                 if (!includePorts.some(item => item.id === i.id)) {
                     return;
                 }
-                // console.log(i.id);
-                // for(var i in includePorts) {
-
-                // }
                 const url = i.url;
                 const id = i.id;
                 const name = i.name;
@@ -45,15 +42,17 @@ export default function sync(config) {
 
                 let params = mockjs3ts(requestTemplate.data);
                 let response = mockjs2ts(responseTemplate.data.data);
-                let array = false;
+                console.log(responseTemplate.data.data);
+                // if (responseTemplate.data.data.length) {
+                //     response = mockjs2ts(responseTemplate.data.data[0]);
+                // }
                 writeToTs(path.join(rootDir, url), {
                     name,
                     description,
                     method,
                     url,
                     params,
-                    response,
-                    array
+                    response
                 });
             });
         });
@@ -88,7 +87,7 @@ function writeToTs(dir, options) {
     const url = '${options.url}';
     interface Params ${options.params}
     interface Response ${options.response}
-    const metaProvider: ApiMetaProvider<Params, ${options.array ? 'Array<Response>' : 'Response'}> = function() {
+    const metaProvider: ApiMetaProvider<Params, Response> = function() {
         return {
             url: url,
             method: method

@@ -107,6 +107,7 @@ const list = [
     { id: 334, url: '/api/class-question/point-examine' },
     { id: 333, url: '/api/class-question/question-examine' },
     { id: 448, url: '/api/feed-back/send' },
+    { id: 449, url: '/api/faq/type-list' },
     { id: 230, url: '/api/teacher/teacher-apply-medal' },
     { id: 451, url: '/api/salary/apply-invite-teacher' },
     { id: 270, url: '/api/jingyou-favorite/operate-question?action=sort' },

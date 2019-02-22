@@ -1,3 +1,4 @@
+//最初的原版
 import axios from 'axios';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -8,6 +9,7 @@ export default function sync(config) {
     const endpoint = config.endpoint;
     const rootDir = config.rootDir;
     const repositories = config.repositories;
+    const includePorts = config.includePorts;
     const cache = getCacheFile(rootDir);
     const { moduleCache, interfaceCache } = prepareCache(cache);
 
@@ -21,10 +23,18 @@ export default function sync(config) {
             if (moduleCache[m.id] === m.updatedAt) {
                 return;
             }
+
             m.interfaces.forEach(async i => {
                 if (interfaceCache[i.id] === i.updatedAt) {
                     return;
                 }
+                if (!includePorts.some(item => item.id === i.id)) {
+                    return;
+                }
+                // console.log(i.id);
+                // for(var i in includePorts) {
+
+                // }
                 const url = i.url;
                 const id = i.id;
                 const name = i.name;
@@ -57,12 +67,12 @@ async function getRequestTemplate(endpoint: string, id: number) {
 async function getResponseTemplate(endpoint: string, id: number) {
     return await axios(`${endpoint}/app/mock/template/${id}?scope=response`);
 }
-
 function mockjs2ts(mockjsObj: object) {
     return convert(mockjsObj);
 }
 function writeToTs(dir, options) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    // console.log(path.join(dir, 'index.ts'));
     return fs.writeFileSync(
         path.join(dir, 'index.ts'),
         prettier.format(
