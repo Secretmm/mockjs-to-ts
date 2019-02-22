@@ -69,7 +69,6 @@ async function getRequestTemplate(endpoint: string, id: number) {
 async function getResponseTemplate(endpoint: string, id: number) {
     return await axios(`${endpoint}/app/mock/template/${id}?scope=response`);
 }
-
 function mockjs2ts(mockjsObj: object) {
     return convert(mockjsObj);
 }
@@ -83,7 +82,6 @@ function writeToTs(dir, options) {
         path.join(dir, 'index.ts'),
         prettier.format(
             `import { ApiMetaProvider } from '@/api';
-
     const method = '${options.method}';
     const url = '${options.url}';
     interface Params ${options.params}
