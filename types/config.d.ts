@@ -8,7 +8,6 @@ declare const _default: {
     }[];
     includePorts: {
         id: number;
-        url: string;
     }[];
 };
 export default _default;

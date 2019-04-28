@@ -43,13 +43,12 @@ const includePortsM = [
     // { id: 485, url: '/api/teacher/class-log' },
     // { id: 519, url: '/api/user' },
     // { id: 584, url: '/api/user/avatar' },
-    // { id: 267, url: '/api/jingyou-favorite/operate-favorite?action=list' },
-    { id: 263, url: '/api/jingyou-favorite/operate-question?action=add' },
-    { id: 232, url: '/api/jing-you/detail' },
-    { id: 271, url: '/api/jing-you/get-points' },
+    // 
 ];
 const includeArray = [
-    { id: 457, url: '/api/course-table/teacher-plan-list' },
+    { id: 654 },
+    { id: 655 },
+    { id: 656 },
 ];
 const list = [
     { id: 555, url: '/api/student/calendar-class' },

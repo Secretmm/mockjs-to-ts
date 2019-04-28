@@ -46,6 +46,19 @@ export default function sync(config) {
                 let params = mockjs3ts(requestTemplate.data);
                 let response = mockjs2ts(responseTemplate.data.data);
                 let array = false;
+                let item = null;
+                console.log('88');
+                for (let i in responseTemplate.data) {
+                    if (i.indexOf('data') !== -1 && responseTemplate.data[i].length) {
+                        item = responseTemplate.data[i][0];
+                        array = true;
+                    }
+                }
+                if (item) {
+                    console.log('到了这里');
+                    response = mockjs2ts(item);
+                }
+
                 writeToTs(path.join(rootDir, url), {
                     name,
                     description,
