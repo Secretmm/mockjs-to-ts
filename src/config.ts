@@ -1,4 +1,3 @@
-import includePorts from './list';
 const repositories = [
     {
         //YiYou
@@ -26,46 +25,15 @@ const repositories = [
         sync: true
     },
 ];
-const includePortsM = [
-    // { id: 449, url: '/api/faq/type-list' },
-    // { id: 491, url: '/api/rob-class/index' },
-    // { id: 393, url: '/api/product-log/comment-list' },
-    // { id: 532, url: '/api/teacher/class-log' },
-    // { id: 542, url: '/api/teacher/get-student-exam-type' },
-    // { id: 541, url: '/api/teacher/get-student-score-list' },
-    // { id: 481, url: '/api/credit/gift-list' },
-    // { id: 501, url: '/api/teacher/remind' },
-    // { id: 544, url: '/api/teacher/get-business-training-time' },
 
-    // { id: 537, url: '/api/teacher/update-class-train-time' },//这个接口很特殊
-
-    // { id: 485, url: '/api/faq/faq-detail' },
-    // { id: 485, url: '/api/teacher/class-log' },
-    // { id: 519, url: '/api/user' },
-    // { id: 584, url: '/api/user/avatar' },
-    // 
-];
 const includeArray = [
-    { id: 654 },
-    { id: 655 },
-    { id: 656 },
+    { id: 701 },
+    { id: 702 },
+    { id: 703 },
+    { id: 704 },
+    { id: 705 },
+    { id: 706 }
 ];
-const list = [
-    { id: 555, url: '/api/student/calendar-class' },
-    { id: 557, url: '/api/student/edit-headline' },
-    { id: 558, url: '/api/student/student-detail' },
-    { id: 559, url: '/api/student/student-hours' },
-    { id: 560, url: '/api/student/edit-data' },
-    { id: 561, url: '/api/user/password' },
-    { id: 565, url: '/api/student/class-subject' },
-
-    { id: 564, url: '/api/student/get-live-class-msg' },
-    { id: 566, url: '/api/student/get-live-class-plan' },
-    { id: 571, url: '/api/student/recent-class' },
-    { id: 569, url: '/api/class/check-code' },
-    { id: 570, url: '/api/student/class-record' },
-
-]
 export default {
     mockServer: 'rap2',
     endpoint: 'http://test.yi-you.org:9998',

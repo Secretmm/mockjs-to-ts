@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
+        "build": "tsc",
+        "api": "node dist/main.js",
+        "action": "node dist/actionGenerate/main.js"
     },
     "repository": {
         "type": "git",
