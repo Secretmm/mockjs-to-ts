@@ -105,7 +105,7 @@ function writeToTs(dir, options) {
             method: method
         };
     };
-    export {metaProvider, Params};
+    export {metaProvider, Params, Response};
     `,
             { parser: 'typescript', singleQuote: true, tabWidth: 4 }
         )
