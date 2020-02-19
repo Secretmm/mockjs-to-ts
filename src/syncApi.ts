@@ -74,7 +74,12 @@ export default function sync(config) {
 }
 
 async function getRepository(endpoint: string, id: number) {
-    return await axios(`${endpoint}/repository/get?id=${id}`);
+    return await axios({
+        url: `${endpoint}/repository/get?id=${id}`,
+        headers: {
+            'Cookie': 'koa.sid=OElCqeKR_B5DiClqNOK7mxd7LJuuXIK8; koa.sid.sig=uAfoJgNr_6fk1X2Ee5MofEveiY0'
+        }
+    });
 }
 async function getRequestTemplate(endpoint: string, id: number) {
     return await axios(`${endpoint}/app/mock/template/${id}?scope=request`);
