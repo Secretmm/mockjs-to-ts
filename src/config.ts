@@ -49,17 +49,23 @@ const repositories = [
         id: 230531,
         sync: true
     },
+    {
+        //学生端app
+        id: 248639,
+        sync: true
+    },
 ];
 
 const includeArray = [
-    { id: 1439904 },
+    { id: 1634135 },
+    { id: 1641757 },
 ];
 export default {
     mockServer: 'rap2',
     endpoint: 'http://rap2api.taobao.org',
     // endpoint: 'http://test.yi-you.org:9998',
-    // rootDir: 'apis',
     rootDir: 'apisArray',
+    // rootDir: 'apisSwm',
     repositories: repositories,
     includePorts: includeArray
 }

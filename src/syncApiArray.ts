@@ -85,15 +85,14 @@ function writeToTs(dir, options) {
 
     const method = '${options.method}';
     const url = '${options.url}';
-    interface Params ${options.params}
-    interface Response ${options.response}
-    const metaProvider: ApiMetaProvider<Params, Response> = function() {
+    export interface Params ${options.params}
+    export interface Response ${options.response}
+    export const metaProvider: ApiMetaProvider<Params, Response> = function() {
         return {
             url: url,
             method: method
         };
     };
-    export {metaProvider, Params};
     `,
             { parser: 'typescript', singleQuote: true, tabWidth: 4 }
         )

@@ -3,3 +3,5 @@
 # cd dist
 # node main.js
 # yarn action
+# yarn actionreact
+# yarn actionvue

@@ -77,7 +77,7 @@ async function getRepository(endpoint: string, id: number) {
     return await axios({
         url: `${endpoint}/repository/get?id=${id}`,
         headers: {
-            'Cookie': 'koa.sid=OElCqeKR_B5DiClqNOK7mxd7LJuuXIK8; koa.sid.sig=uAfoJgNr_6fk1X2Ee5MofEveiY0'
+            'Cookie': 'koa.sid=9Z45JyYURFfnIx8v2Zx7lmwzlIw4pH9t; koa.sid.sig=8_Ddwv128ZKjivsJN7nJq-FA5CA'
         }
     });
 }
@@ -100,18 +100,17 @@ function writeToTs(dir, options) {
         path.join(dir, 'index.ts'),
         prettier.format(
             `import { ApiMetaProvider } from '@/api';
-    const method = '${options.method}';
-    const url = '${options.url}';
-    interface Params ${options.params}
-    interface Response ${options.response}
-    const metaProvider: ApiMetaProvider<Params, ${options.array ? 'Array<Response>' : 'Response'}> = function() {
-        return {
-            url: url,
-            method: method
-        };
-    };
-    export {metaProvider, Params, Response};
-    `,
+            const method = '${options.method}';
+            const url = '${options.url}';
+            export interface Params ${options.params}
+            export interface Response ${options.response}
+            export const metaProvider: ApiMetaProvider<Params, ${options.array ? 'Array<Response>' : 'Response'}> = function() {
+                return {
+                    url: url,
+                    method: method
+                };
+            };
+            `,
             { parser: 'typescript', singleQuote: true, tabWidth: 4 }
         )
     );
