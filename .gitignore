@@ -1,2 +1,6 @@
 node_modules
-dist
+dist/apis
+dist/apisArray
+dist/apisClass
+dist/apisSwm
+dist/apisMore

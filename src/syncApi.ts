@@ -77,7 +77,7 @@ async function getRepository(endpoint: string, id: number) {
     return await axios({
         url: `${endpoint}/repository/get?id=${id}`,
         headers: {
-            'Cookie': 'koa.sid=9Z45JyYURFfnIx8v2Zx7lmwzlIw4pH9t; koa.sid.sig=8_Ddwv128ZKjivsJN7nJq-FA5CA'
+            'Cookie': 'koa.sid=jiJ6qrXFAacIkDCVfuzFHvip8ZHrPiho; koa.sid.sig=_a7H6NMLqoZRFRqNdyj95P8zB6w'
         }
     });
 }

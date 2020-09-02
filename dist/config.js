@@ -1,4 +1,6 @@
-const repositories = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var repositories = [
     // {
     //     //YiYou
     //     id: 19,
@@ -60,11 +62,10 @@ const repositories = [
         sync: true
     },
 ];
-
-const includeArray = [
+var includeArray = [
     { id: 1698849 },
 ];
-export default {
+exports.default = {
     mockServer: 'rap2',
     endpoint: 'http://rap2api.taobao.org',
     // endpoint: 'http://test.yi-you.org:9998',
@@ -72,4 +73,4 @@ export default {
     rootDir: 'apisSwm',
     repositories: repositories,
     includePorts: includeArray
-}
+};

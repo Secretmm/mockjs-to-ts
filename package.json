@@ -9,6 +9,7 @@
         "api": "node dist/main.js",
         "action": "node dist/actionGenerate/main.js",
         "actionreact": "node dist/actionGenerateReact/main.js",
+        "actionreactp": "node dist/actionGenerateReactp/main.js",
         "actionvue": "node dist/actionGenerateVue/main.js"
     },
     "repository": {
