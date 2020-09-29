@@ -93,8 +93,10 @@ function sync(config) {
                                         array = false;
                                         item = null;
                                         console.log('88');
+                                        console.log(url);
                                         for (i_1 in responseTemplate.data) {
-                                            if (i_1.indexOf('data') !== -1 && responseTemplate.data[i_1].length) {
+                                            if (i_1.indexOf('data') !== -1 &&
+                                                responseTemplate.data[i_1].length) {
                                                 item = responseTemplate.data[i_1][0];
                                                 array = true;
                                             }
@@ -130,7 +132,7 @@ function getRepository(endpoint, id) {
                 case 0: return [4 /*yield*/, axios_1.default({
                         url: endpoint + "/repository/get?id=" + id,
                         headers: {
-                            'Cookie': 'koa.sid=jiJ6qrXFAacIkDCVfuzFHvip8ZHrPiho; koa.sid.sig=_a7H6NMLqoZRFRqNdyj95P8zB6w'
+                            Cookie: 'koa.sid=IlMNohRiyzAxAe-w8FFcwgv0rZWw8lQ9; koa.sid.sig=DN1Tlrgq6e73jBRbStoMdyIB55k'
                         }
                     })];
                 case 1: return [2 /*return*/, _a.sent()];

@@ -59,11 +59,14 @@ const repositories = [
         id: 261875,
         sync: true
     },
+    {
+        //老师端app
+        id: 264982,
+        sync: true
+    }
 ];
 
-const includeArray = [
-    { id: 1698849 },
-];
+const includeArray = [{ id: 1752605 }];
 export default {
     mockServer: 'rap2',
     endpoint: 'http://rap2api.taobao.org',
@@ -72,4 +75,4 @@ export default {
     rootDir: 'apisSwm',
     repositories: repositories,
     includePorts: includeArray
-}
+};

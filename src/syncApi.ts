@@ -48,8 +48,12 @@ export default function sync(config) {
                 let array = false;
                 let item = null;
                 console.log('88');
+                console.log(url);
                 for (let i in responseTemplate.data) {
-                    if (i.indexOf('data') !== -1 && responseTemplate.data[i].length) {
+                    if (
+                        i.indexOf('data') !== -1 &&
+                        responseTemplate.data[i].length
+                    ) {
                         item = responseTemplate.data[i][0];
                         array = true;
                     }
@@ -77,7 +81,8 @@ async function getRepository(endpoint: string, id: number) {
     return await axios({
         url: `${endpoint}/repository/get?id=${id}`,
         headers: {
-            'Cookie': 'koa.sid=jiJ6qrXFAacIkDCVfuzFHvip8ZHrPiho; koa.sid.sig=_a7H6NMLqoZRFRqNdyj95P8zB6w'
+            Cookie:
+                'koa.sid=IlMNohRiyzAxAe-w8FFcwgv0rZWw8lQ9; koa.sid.sig=DN1Tlrgq6e73jBRbStoMdyIB55k'
         }
     });
 }
@@ -104,7 +109,9 @@ function writeToTs(dir, options) {
             const url = '${options.url}';
             export interface Params ${options.params}
             export interface Response ${options.response}
-            export const metaProvider: ApiMetaProvider<Params, ${options.array ? 'Array<Response>' : 'Response'}> = function() {
+            export const metaProvider: ApiMetaProvider<Params, ${
+                options.array ? 'Array<Response>' : 'Response'
+            }> = function() {
                 return {
                     url: url,
                     method: method
