@@ -82,7 +82,7 @@ async function getRepository(endpoint: string, id: number) {
         url: `${endpoint}/repository/get?id=${id}`,
         headers: {
             Cookie:
-                'koa.sid=IlMNohRiyzAxAe-w8FFcwgv0rZWw8lQ9; koa.sid.sig=DN1Tlrgq6e73jBRbStoMdyIB55k'
+                'koa.sid=hC-_5Yf4FS_N64GQTS3Mdv9yNjUDExO_; koa.sid.sig=VSgF7MlADWDC4oiEXBsXrBnrbkw'
         }
     });
 }

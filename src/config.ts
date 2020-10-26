@@ -66,7 +66,14 @@ const repositories = [
     }
 ];
 
-const includeArray = [{ id: 1752605 }];
+const includeArray = [
+    { id: 1671182 },
+    { id: 1671190 },
+    { id: 1671198 },
+    { id: 1758105 },
+    { id: 1758243 },
+    { id: 1758432 }
+];
 export default {
     mockServer: 'rap2',
     endpoint: 'http://rap2api.taobao.org',

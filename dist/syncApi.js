@@ -132,7 +132,7 @@ function getRepository(endpoint, id) {
                 case 0: return [4 /*yield*/, axios_1.default({
                         url: endpoint + "/repository/get?id=" + id,
                         headers: {
-                            Cookie: 'koa.sid=IlMNohRiyzAxAe-w8FFcwgv0rZWw8lQ9; koa.sid.sig=DN1Tlrgq6e73jBRbStoMdyIB55k'
+                            Cookie: 'koa.sid=hC-_5Yf4FS_N64GQTS3Mdv9yNjUDExO_; koa.sid.sig=VSgF7MlADWDC4oiEXBsXrBnrbkw'
                         }
                     })];
                 case 1: return [2 /*return*/, _a.sent()];

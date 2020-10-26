@@ -67,7 +67,14 @@ var repositories = [
         sync: true
     }
 ];
-var includeArray = [{ id: 1752605 }];
+var includeArray = [
+    { id: 1671182 },
+    { id: 1671190 },
+    { id: 1671198 },
+    { id: 1758105 },
+    { id: 1758243 },
+    { id: 1758432 }
+];
 exports.default = {
     mockServer: 'rap2',
     endpoint: 'http://rap2api.taobao.org',
